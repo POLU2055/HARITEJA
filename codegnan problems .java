@@ -239,3 +239,63 @@ public class Main {
 
 //FOR GETTING OUTPUT WITH EXACT DECIMAL PLACES WE USE String.format("%.1f",n)
 //Given a number N, compute the sum of factorials of all numbers from 1 to N using a for loop. Print the sum modulo 10^9+7.(DOUBT)
+
+//Create a structure Employee with empName, empID, and a pointer to double salary. Read and display employee information using pointers.
+#include<stdio.h>
+#include<stdlib.h>
+struct Employee{
+    int empId;
+    char empName[50];
+    double *salary;
+};
+void main(){
+    struct Employee emp;
+    emp.salary=(double *)malloc(sizeof(double));
+    if(emp.salary==NULL){
+        printf("Memory is not allocated");
+    }
+    scanf("%[^\n]",emp.empName);
+    scanf("%d",&emp.empId);
+    scanf("%lf",emp.salary);
+    struct Employee *ptr=&emp;
+    printf("%s",ptr->empName);
+    printf("%d",ptr->empId);
+    printf("%lf",*(ptr->salary));
+    
+}
+
+//In a sports tournament, each team has multiple players. Each player has a name and a score. 
+//Store details for multiple teams and print the highest-scoring player of each team.
+//First line: Integer n (number of teams) For each team: Team name , Integer m (number of players) , m lines: 
+//Player name and score and output was For each team: TeamName HighestPlayerName HighestScore(doubt)
+
+//Define a structure Product with id, name, stock, threshold. Use a pointer to generate a stock alert if stock < threshold.
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+struct product{
+    int id;
+    char name[90];
+    int *stock;
+    int thresold;
+};
+void main(){
+    struct product p1;
+    p1.stock=(int *)malloc(sizeof(int));
+    scanf("%d",&p1.id);
+    getchar(); 
+    fgets(p1.name, sizeof(p1.name), stdin);
+    p1.name[strcspn(p1.name, "\n")] = '\0';
+    scanf("%d",p1.stock);
+    scanf("%d",&p1.thresold);
+    struct product *ptr=&p1;
+    printf("%d\n",ptr->id);
+    printf("%s\n",ptr->name);
+    if(*(ptr->stock)<ptr->thresold){
+        printf("Alert");
+    }
+    else{
+        printf("%d\n",*(ptr->stock));
+        printf("%d\n",ptr->thresold);
+    }
+}
