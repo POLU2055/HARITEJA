@@ -299,3 +299,56 @@ void main(){
         printf("%d\n",ptr->thresold);
     }
 }
+
+//INTERFACE
+import java.util.*;
+
+interface Shape {
+    double Area();
+    double Perimeter();
+}
+
+class Name implements Shape {
+    protected int r;
+
+    Name(int a) {
+        this.r = a;
+    }
+
+    public double Area() {
+        return Math.PI * r * r;
+    }
+
+    public double Perimeter() {
+        return 2 * Math.PI * r;
+    }
+}
+
+class B extends Name {
+    B(int a) {
+        super(a);
+    }
+
+    @Override
+    public double Area() {
+        return super.Area();
+    }
+
+    @Override
+    public double Perimeter() {
+        return super.Perimeter();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int m = s.nextInt();
+        
+        B b = new B(m);  // Correct instantiation
+        System.out.println("Area: " + b.Area());
+        System.out.println("Perimeter: " + b.Perimeter());
+
+        s.close();
+    }
+}
